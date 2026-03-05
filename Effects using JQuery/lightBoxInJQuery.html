@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light-Box</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+        type="text/css" media="screen" />
+    <style>
+        #gallery-section {
+            border-block-end-width: 100%;
+            padding: 50px 0px;
+            background-color: #ccc;
+        }
+
+        #gallery-section h1 {
+            text-align: center;
+        }
+
+        .gallery-inner {
+            width: 1320px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .gallery-items {
+            flex-basis: 23%;
+            margin: 1%;
+        }
+
+        .gallery-items img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="gallery-section">
+        <h1>Gallery</h1>
+        <div class="gallery-inner">
+            <div class="gallery-items">
+                <a href="Images/elephant-cub-tsavo-kenya-66898.jpeg"><img src="Images/elephant-cub-tsavo-kenya-66898.jpeg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/pexels-photo (1).jpg"><img src="Images/pexels-photo (1).jpg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/pexels-photo-113338.jpeg"><img src="Images/pexels-photo-113338.jpeg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/pexels-photo-164821.jpeg"><img src="Images/pexels-photo-164821.jpeg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/pexels-photo-102127.jpeg"><img src="Images/pexels-photo-102127.jpeg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/pexels-photo-132477.jpeg"><img src="Images/pexels-photo-132477.jpeg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/forest-trees-perspective-bright-957024.jpeg"><img src="Images/forest-trees-perspective-bright-957024.jpeg" alt=""></a>
+            </div>
+            <div class="gallery-items">
+                <a href="Images/horse-herd-fog-nature-52500.jpeg"><img src="Images/horse-herd-fog-nature-52500.jpeg" alt=""></a>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function() {
+  // add all to same gallery
+  $(".gallery-items a").attr("data-fancybox","mygallery");
+  // assign captions and title from alt-attributes of images:
+  $(".gallery-items a").each(function(){
+    $(this).attr("data-caption", $(this).find("img").attr("alt"));
+    $(this).attr("title", $(this).find("img").attr("alt"));
+  });
+  // start fancybox:
+	$(".gallery-items a").fancybox();
+});
+</script>
+
+</html>

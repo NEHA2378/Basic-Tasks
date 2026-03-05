@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Text</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  font-family:sans-serif;
+}
+
+.scrollDown{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:50px;
+  color:rgb(218, 60, 173);
+}
+
+.word{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.letter{
+  font-size:8vw;
+  margin:0 5px;
+  display:inline-block;
+}
+
+/* colors */
+.color0{color:#F94816;}
+.color1{color:#E9D443;}
+.color2{color:#FD91F7;}
+.color3{color:#28963f;}
+.color4{color:#E43485;}
+.color5{color:#A2E4F2;}
+.color6{color:#FA476E;}
+</style>
+</head>
+
+<body>
+
+<div class="scrollDown">SCROLL DOWN</div>
+<div id="container"></div>
+
+<script>
+const animations = [
+  "animate__bounce",
+  "animate__flash",
+  "animate__pulse",
+  "animate__rubberBand",
+  "animate__shakeX",
+  "animate__tada",
+  "animate__wobble",
+  "animate__jello",
+  "animate__fadeIn",
+  "animate__fadeInDown",
+  "animate__zoomIn",
+  "animate__slideInUp",
+  "animate__rotateIn"
+];
+
+const container = document.getElementById("container");
+let colorCounter = 0;
+
+animations.forEach(animation => {
+
+  const wordDiv = document.createElement("div");
+  wordDiv.className = "word";
+  container.appendChild(wordDiv);
+
+  animation.split("").forEach((char,i)=>{
+
+    const letter = document.createElement("div");
+    letter.className = `letter color${colorCounter % 7}`;
+    letter.textContent = char;
+    letter.dataset.animation = animation;
+    letter.style.animationDelay = (i*0.1)+"s";
+
+    wordDiv.appendChild(letter);
+    colorCounter++;
+  });
+
+});
+
+/* Scroll Trigger */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll(".letter").forEach(letter=>{
+        letter.classList.add("animate__animated", letter.dataset.animation);
+      });
+    }
+  });
+},{threshold:0.5});
+
+document.querySelectorAll(".word").forEach(word=>{
+  observer.observe(word);
+});
+</script>
+
+</body>
+</html>
